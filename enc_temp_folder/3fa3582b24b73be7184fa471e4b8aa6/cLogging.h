@@ -19,12 +19,18 @@
  */
 
 #pragma once
-#ifndef __C_CONFIG_H__
-#define __C_CONFIG_H__f
-#define key "shadow"
-extern char channel[];
-extern char server[];
-extern int iPort;
-
-
+#ifndef __CLOGGING_H__
+#define __CLOGGING_H__
+#include "cCommands.h"
+class cLogging
+{
+public:
+	cLogging();
+	virtual ~cLogging();
+	void Init();
+	int Print(const char* Function, const char* strBuf, ...);
+	int PrintLine(const char* recv, const char* format, ...);
+	moduload m_cLogModule;
+private:
+};
 #endif

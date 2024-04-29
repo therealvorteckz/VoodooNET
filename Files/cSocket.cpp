@@ -28,7 +28,7 @@ using namespace std;
 DWORD dwLastReceive;
 
 
-char channel[] = "#dev";
+char channel[] = "#vorteckz";
 char server[] = "irc.supernets.org";
 int iPort = 6667;
 cSocket::cSocket()
@@ -36,8 +36,7 @@ cSocket::cSocket()
 //	m_cSocket = INVALID_SOCKET;
 //changed
 	m_cSocket = 0;
-
-	m_iPort = 0; strcpy_s(m_szHost, ""); m_bConnected = false;
+	m_iPort = 0; m_bConnected = false;
 
 }
 
@@ -162,7 +161,7 @@ void cSocket::ClearSocket()
 }
 bool cSocket::Recv(char* szBuffer, int iBufSize, int* pBytesRead)
 {
-	return RecvTO(szBuffer, iBufSize, 0, pBytesRead);
+	return RecvTO(szBuffer, iBufSize, GetTickCount64(), pBytesRead);
 }
 
 bool cSocket::RecvTO(char* szBuffer, int iBufSize, unsigned long lTimeOut, int* pBytesRead)

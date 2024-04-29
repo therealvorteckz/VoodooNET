@@ -19,12 +19,38 @@
  */
 
 #pragma once
-#ifndef __C_CONFIG_H__
-#define __C_CONFIG_H__f
-#define key "shadow"
-extern char channel[];
-extern char server[];
-extern int iPort;
+#ifndef __CASTRO_H__
+#define __CASTRO_H__
+#include "cSocket.h"
+
+class cAstro : public cCommandHandler
+{
+public:
+	cAstro();
+	virtual ~cAstro();
+	virtual bool HandleCommand(char* cmd, char* params, ...);
+	virtual bool Run();
+	void Init();
+	cSocket	m_cSocket;
+	bool m_bConnected;
+	bool sendmsg(const char* fmt, ...);
+	bool SendRaw(const char* szFmt, ...);
+	char* NickCreate();
+
+	bool				m_bRunning;
+	command m_cmdIRCName;
+	command m_cmdSendMsg;
+	command	m_cmdTopic;
+
+	moduload	m_cAstroModule;
+};
 
 
+static struct astro
+
+{
+
+//	cString pCmd;
+//	cString cMsg;
+}Parse;
 #endif

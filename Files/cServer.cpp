@@ -240,7 +240,7 @@ void cServer::p2pList(int socket)
 
 	}
 #endif
-	cString voodoo;
+//	cString voodoo;
 }
 int cServer::CalculateClients()
 {
@@ -446,7 +446,7 @@ void cServer::Init()
 #endif
 
 #ifndef  NO_P2P
-//								g_cVoodoo->m_cServer.SendToClients("[%s] [Message: %s]", clients[z].name, buffer);
+								//								g_cVoodoo->m_cServer.SendToClients("[%s] [Message: %s]", clients[z].name, buffer);
 #endif
 							}
 

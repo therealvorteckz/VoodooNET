@@ -17,27 +17,11 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-
 #pragma once
 #ifndef __CASTRO_H__
 #define __CASTRO_H__
 #include "cSocket.h"
-#define IRCLINE 200
-#define MAX_NICKLEN 21
-#define MAX_DATA_SIZE 4096
-#define FLOOD_DELAY 10
 
-class CMessage
-{
-public:
-	cString		sSrc;
-	cString		sIdentd;
-	cString		cHost;
-	cString		sDest;
-	cString		sCmd;
-	cString		sParameters;
-
-};
 class cAstro : public cCommandHandler
 {
 public:

@@ -50,7 +50,9 @@ void cServerControl::Init()
 	g_cVoodoo->m_cAstro.sendmsg("04[15cServer04:15Module04]00 Handle Command");
 #endif
 
+#ifndef NO_P2P
 	StartDaemon();
+#endif
 
 }
 

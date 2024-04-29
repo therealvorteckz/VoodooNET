@@ -122,11 +122,11 @@
     <ClCompile Include="Files\cMagic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Files\cAstro.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Files\MD5.cpp">
       <Filter>Source Files\Encryption</Filter>
+    </ClCompile>
+    <ClCompile Include="Files\cAstro.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

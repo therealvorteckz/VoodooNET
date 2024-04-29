@@ -96,11 +96,8 @@ bool cThread::HandleCommand(char* cmd, char* params, ...)
 #ifdef _DEBUG
 		g_cVoodoo->m_cLogging.Print("cThread", "[Listing Threads]");
 #endif
-#ifndef NO_IRC
-		g_cVoodoo->m_cIRC.sendmsg("[cThread]: [Listing Threads]");
-#endif
 #ifndef NO_ASTRO
-		g_cVoodoo->m_cAstro.sendmsg("04[15cThread04]: [15Listing Threads04]");
+			g_cVoodoo->m_cAstro.sendmsg("04[15cThread04]: [15Listing Threads04]");
 #endif
 #ifndef NO_P2P
 		g_cVoodoo->m_cServer.SendToClients("[cThread]: [Listing Threads]");
@@ -154,7 +151,7 @@ int cThread::AddThread(int id, char* name, ...)
 {
 
 
-	char tbuffer[(IRCLINE - (MAX_NICKLEN + 10))];
+	char tbuffer[(IRCLINE - (15 + 10))];
 	va_list argp;
 	va_start(argp, name);
 	_vsnprintf_s(tbuffer, sizeof(tbuffer), name, argp);

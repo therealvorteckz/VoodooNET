@@ -19,12 +19,8 @@
  */
 
 #pragma once
-#ifndef __C_CONFIG_H__
-#define __C_CONFIG_H__f
-#define key "shadow"
-extern char channel[];
-extern char server[];
-extern int iPort;
-
+#ifndef __CTESTTHREAD_H__
+#define __CTESTTHREAD_H__
+DWORD WINAPI TestOneThread(LPVOID param);
 
 #endif

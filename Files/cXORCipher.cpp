@@ -45,7 +45,8 @@ void cXORCipher::Init()
     ADDMODULE(m_cXORCipher, "cXORCipher", "2.0", "XOR Encryption/Decryption Module");
 }
 
-string cXORCipher::XORCipherEncrypt(string msg, string key) {
+string cXORCipher::XORCipherEncrypt(string msg, string key) 
+{
 
     string encryptHexa = "";
     int keyItr = 0;

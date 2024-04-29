@@ -77,8 +77,7 @@ void cCommands::RegisterModule(moduload *moo, const char* cModule, const char* c
 	moo->cDesc.assign(cDesc);
 	m_cModules.push_back(moo);
 #ifdef _DEBUG
-	
-//	g_cVoodoo->m_cLogging.PrintLine("cCore", "MODULE: %s [%s]", moo->cModule.c_str(), moo->cVersion.c_str(), moo->cDesc.c_str());
+	g_cVoodoo->m_cLogging.PrintLine("cCore", "MODULE: %s [%s]", moo->cModule.c_str(), moo->cVersion.c_str(), moo->cDesc.c_str());
 #endif
 }
 

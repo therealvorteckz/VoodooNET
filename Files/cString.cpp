@@ -221,13 +221,8 @@ cString cString::Token(int iNum, const char* szDelim, bool bUseQuotes)
 			try {
 				if (iNum > pData->vTokens.size()) return cString("");
 				return pData->vTokens.at(iNum);
-#ifdef _WIN32
-			}
-			catch (out_of_range) {
-#else
 			}
 			catch (...) {
-#endif // _WIN32
 				return cString("");
 			};
 		}
@@ -280,17 +275,6 @@ cString cString::Token(int iNum, const char* szDelim, bool bUseQuotes)
 
 cString cString::Token(int iNum, const char* szDelim) { return Token(iNum, szDelim, false); }
 
-
-//void cString::operator=(const cString& sStr) { Assign(sStr); }
-//void cString::operator=(const char* szStr) { Assign(szStr); }
-//char& cString::operator[](int iPos)
-//{
-//	return m_szString[iPos];
-//}
-//const char& cString::operator[](int iPos) const
-//{
-//	return m_szString[iPos];
-//}
 
 cString::operator const char* () const {
 	return CStr();
