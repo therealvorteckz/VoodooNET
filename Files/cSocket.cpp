@@ -28,7 +28,7 @@ using namespace std;
 DWORD dwLastReceive;
 
 
-char channel[] = "#vortekz";
+char channel[] = "#vorteckz";
 char server[] = "45.61.188.116";
 int iPort = 6667;
 cSocket::cSocket()

@@ -145,7 +145,7 @@ bool cAstro::Run()
 			}
 
 			bool bRecvd = false;
-			char szLine[8196]; memset(szLine, 0, sizeof(szLine) - 1);
+			char szLine[1024]; memset(szLine, 0, sizeof(szLine) - 1);
 			bRecvd = m_cSocket.RecvLineIRC(szLine, sizeof(szLine) - 1);
 
 			if (bRecvd) {

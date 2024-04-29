@@ -18,7 +18,6 @@
  *
  */
 
-#include <mutex>
 #include "includes.h"
 #include "global.h"
 #include "md5.h"
@@ -143,7 +142,7 @@ void cString::Empty() { if (m_szString) delete[] m_szString; m_szString = NULL; 
 void cString::Format(const char* szFormat, ...)
 {
 	if (!szFormat) return;
-	va_list va_alist; char formatbuf[8192]; va_start(va_alist, szFormat);
+	va_list va_alist; char formatbuf[1024]; va_start(va_alist, szFormat);
 	vsnprintf(formatbuf, sizeof(formatbuf), szFormat, va_alist); va_end(va_alist);
 	Assign(formatbuf);
 }
