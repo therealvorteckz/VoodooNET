@@ -12,7 +12,7 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
  * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
  * PURPOSE AND NONINFRINGEMENT OF THIRD PARTY RIGHTS. IN NO EVENT SHALL THE AUTHORS OR
- * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN	
  * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
@@ -217,13 +217,20 @@ cString cString::Token(int iNum, const char* szDelim, bool bUseQuotes)
 		if (!memcmp(pData->szMD5, szMD5, sizeof(pData->szMD5)) &&
 			!memcmp(pData->szDelim, szDelim, (int)strlen(szDelim))) {
 			g_mMutex.unlock();
+
 			try {
 				if (iNum > pData->vTokens.size()) return cString("");
 				return pData->vTokens.at(iNum);
+#ifdef _WIN32
+			}
+			catch (out_of_range) {
+#else
 			}
 			catch (...) {
+#endif // _WIN32
 				return cString("");
 			};
+
 		}
 	}
 

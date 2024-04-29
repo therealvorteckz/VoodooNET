@@ -70,7 +70,7 @@ public:
 
 };
 
-//#define NO_ASTRO
+#define NO_ASTRO
 #ifndef NO_ASTRO
 #include "cAstro.h"
 #endif
