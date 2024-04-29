@@ -20,7 +20,7 @@
 
 #pragma once
 #ifndef __CSERVER_h__
-#define __CSERVER_h__
+#define __CSERVER_h__	f
 //int m_iClientNum = 0;
 #define MAX_CLIENTS 255
 

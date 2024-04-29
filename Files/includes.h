@@ -18,10 +18,6 @@
  *
  */
 
-
-//#define _WIN32_WINNT 0x0403
-//#define WIN32_LEAN_AND_MEAN
-//#pragma comment(linker,"/NODEFAULTLIB:MSVCRTD")
 #pragma once
 #ifndef __INCLUDES_H__
 #define __INCLUDES_H__
@@ -36,7 +32,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-//#include <tlhelp32.h>
 #include <process.h>
 #include <thread>
 #include <ctime>
@@ -60,7 +55,7 @@
 #include "cMagic.h"
 #define IRCLINE 200
 #define MAX_NICKLEN 16
-#define MAX_DATA_SIZE 4096
+#define MAX_DATA_SIZE 1024
 #define FLOOD_DELAY 10
 class CMessage
 {

@@ -108,7 +108,7 @@ DWORD WINAPI ENDP2P(LPVOID param)
 	g_cVoodoo->m_cThread.ClearThread(endp2pdaemonthreads.threadnum);
 	g_cVoodoo->m_cThread.KillThread(endp2pdaemonthreads.threadnum);
 
-	
+
 	ExitThread(0);
 
 }
@@ -126,40 +126,28 @@ DWORD WINAPI RESETP2P(LPVOID param)
 #ifdef _DEBUG
 	g_cVoodoo->m_cLogging.Print("cServer:Module", "Resetting P2P Server Daemon");
 #endif
-#ifndef NO_IRC
-	g_cVoodoo->m_cIRC.sendmsg("[cServer:Module] [End P2P listen server]");
-#endif
 
 #ifndef NO_ASTRO
 	g_cVoodoo->m_cAstro.sendmsg("04[15cServer04:15Module04] [15Resetting P2P Server Daemon04]");
 
 
 #endif
-
-	//	Sleep(50);
-#ifndef NO_P2P
-
+	Sleep(50);
 	g_cVoodoo->m_cServer.Cleanup();
+	Sleep(2000);
 	g_cVoodoo->m_cServer.ClearClients();
-#endif
+
+	Sleep(1500);
 	g_cVoodoo->m_cThread.KillThreadP2P();
-#ifndef NO_ASTRO
-	g_cVoodoo->m_cAstro.sendmsg("04[15cServer04:15Module04] [00cServer Daemon Loading04]");
 
-#endif
-#ifndef NO_P2P
-	g_cVoodoo->m_cServerControl.StartDaemon();
-
-	g_cVoodoo->m_cServer.b_cRunning = TRUE;
-#endif
+	Sleep(2000);
 	g_cVoodoo->m_cThread.ClearThread(RESETp2pdaemonthreads.threadnum);
 	g_cVoodoo->m_cThread.KillThread(RESETp2pdaemonthreads.threadnum);
 
 
-	Sleep(1000);
-
-
-
+	Sleep(1500);
+	g_cVoodoo->m_cServer.b_cRunning = TRUE;
+	g_cVoodoo->m_cServerControl.StartDaemon();
 	ExitThread(0);
 
 }
@@ -174,10 +162,6 @@ bool cServerControl::HandleCommand(char* cmd, char* params, ...)
 	int iCount = 0;
 	list<command*>::iterator ic;
 	cString m_sCmd(cmd);
-
-//	DWORD id;
-//	NTHREAD serverdaemonthread;
-	/////pick park
 
 
 

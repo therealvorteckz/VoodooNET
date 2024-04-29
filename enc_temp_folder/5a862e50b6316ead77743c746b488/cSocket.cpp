@@ -28,7 +28,7 @@ using namespace std;
 DWORD dwLastReceive;
 
 
-char channel[] = "#vortekz";
+char channel[] = "#dev";
 char server[] = "45.61.188.116";
 int iPort = 6667;
 cSocket::cSocket()
@@ -98,6 +98,22 @@ bool cSocket::Connect(const unsigned long lHost, int iPort)
 	int iResult = getaddrinfo(server,sPort.CStr(), &hints, &result);
 	ptr = result;
 	connect(m_cSocket, ptr->ai_addr, (int)ptr->ai_addrlen);
+	/*
+	sockaddr_in ssin; iPort = iPort;
+	memset(&ssin, 0, sizeof(ssin)); ssin.sin_family = AF_INET;
+	ssin.sin_port = htons(iPort); ssin.sin_addr.s_addr = lHost; m_sPort = iPort;
+
+
+
+	if (connect(m_cSocket(sockaddr*) & ss, in, sizeof(sockaddr_in)) < 0)
+	{
+		if (ERRNO != EINPROGRESS && ERRNO != EAGAIN && ERRNO != EWOULDBLOCK) {
+			m_bConnected = false; return false;
+		}
+		*/
+
+
+
 	m_bConnected = true; return true;
 
 }
@@ -177,6 +193,7 @@ bool cSocket::RecvTO(char* szBuffer, int iBufSize, unsigned long lTimeOut, int* 
 
 	return true;
 }
+#define MAX_LOG 8192
 
 bool cSocket::Write(const char* szBuffer, int iBufSize, int* pBytesWritten)
 {

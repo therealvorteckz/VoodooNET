@@ -127,7 +127,7 @@ char* cServer::CreateName()
 int cServer::RawSend(int socket, const char* data, ...)
 {
 
-	char tbuffer[255];
+	char tbuffer[IRCLINE];
 	memset(tbuffer, 0, sizeof(tbuffer));
 	int ret;
 	va_list argp;
@@ -240,7 +240,7 @@ void cServer::p2pList(int socket)
 
 	}
 #endif
-//	cString voodoo;
+	cString voodoo;
 }
 int cServer::CalculateClients()
 {

@@ -44,7 +44,7 @@ void cLogging::Init()
 
 int cLogging::PrintLine(const char* recv, const char* format, ...)
 {
-	char LogBuf[512];
+	char LogBuf[1024];
 
 	va_list va_alist;
 	va_start(va_alist, format);
